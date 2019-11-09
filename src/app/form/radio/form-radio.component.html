@@ -1,0 +1,13 @@
+<div>
+  <mat-label>{{ placeholder }}</mat-label>
+</div>
+
+<mat-radio-group [formControlName]="field.name" [disabled]="field?.disabled">
+  <mat-radio-button *ngFor="let option of field.options" [value]="option.value">
+    {{ option.label }}
+  </mat-radio-button>
+</mat-radio-group>
+
+<span class="invalid" *ngIf="form.formGroup.get(field.name).invalid">
+  Value invalid
+</span>

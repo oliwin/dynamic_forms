@@ -1,0 +1,16 @@
+<mat-form-field>
+  <input
+    matInput
+    [formControlName]="field.name"
+    [required]="field?.required"
+    [placeholder]="placeholder"
+    [value]="value"
+    (change)="emitChange(form, field)"
+  />
+</mat-form-field>
+
+<!-- You can bind any event to emitChange(), not necessery change() -->
+
+<span class="invalid" *ngIf="form.formGroup.get(field.name).invalid">
+  Value invalid
+</span>

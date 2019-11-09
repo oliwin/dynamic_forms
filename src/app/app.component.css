@@ -1,0 +1,41 @@
+.header {
+    text-transform: uppercase;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.block {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.block_children {
+    padding-left: 50px;
+}
+
+.block_name {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Forms styles */
+
+.invalid {
+    color: red;
+    display: flex;
+    font-size: 11px;
+}
+
+.form-element-block {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+mat-label {
+    color: #666;
+}

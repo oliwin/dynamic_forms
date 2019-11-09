@@ -1,0 +1,40 @@
+<div class="block">
+  <form [formGroup]="form.formGroup" autocomplete="off" novalidate>
+    <div class="block_name">{{ form.label }}</div>
+
+    <!-- Display children forms -->
+
+    <div class="block_children" *ngIf="formService.hasChild(form.name)">
+      <app-block
+        [form]="childForm"
+        *ngFor="let childForm of formService.child(form.name)"
+      >
+      </app-block>
+    </div>
+
+    <!-- Build dynamic fields -->
+
+    <ng-content></ng-content>
+
+    <!-- <app-field
+      [form]="form"
+      [field]="field"
+      *ngFor="let field of formService.getFields(form.form)"
+    ></app-field> -->
+
+    <!-- If allow submit form separately-->
+
+    <div class="block_actions" *ngIf="isSubmit(form)">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="form.formGroup.invalid"
+        (click)="formService.submit(form.formGroup)"
+      >
+        Отправить
+      </button>
+    </div>
+  </form>
+
+  <!-- Children fields -->
+</div>

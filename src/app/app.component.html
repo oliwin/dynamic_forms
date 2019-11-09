@@ -1,0 +1,53 @@
+<!-- Show form header -->
+
+<div class="header">
+  {{ formService.title }}
+</div>
+
+<!-- Iterate childrens -->
+
+<ng-template #recursiveList let-list>
+  <div class="block" *ngFor="let item of list">
+    <form [formGroup]="item.formGroup" autocomplete="off" novalidate>
+      <div class="block_name">{{ item.label }}</div>
+
+      <!-- Children block from parent above -->
+
+      <div class="block_children" *ngIf="formService.hasChild(item.name)">
+        <ng-container
+          *ngTemplateOutlet="
+            recursiveList;
+            context: { $implicit: formService.childrens(item.name) }
+          "
+        >
+        </ng-container>
+      </div>
+
+      <!-- Render fields from each block, but only when childrens done-->
+
+      <app-field
+        [form]="item"
+        [field]="field"
+        *ngFor="let field of formService.getFields(item.form)"
+      ></app-field>
+    </form>
+  </div>
+</ng-template>
+
+<!-- Iterate roots -->
+
+<ng-container
+  *ngTemplateOutlet="recursiveList; context: { $implicit: formService.roots() }"
+></ng-container>
+
+<!--<app-block [form]="form" *ngFor="let form of formService.roots()"></app-block>-->
+<!-- Submit form -->
+
+<button
+  mat-raised-button
+  color="primary"
+  [disabled]="!formService.isValid()"
+  (click)="formService.submit()"
+>
+  Отправить
+</button>

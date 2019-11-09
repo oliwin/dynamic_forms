@@ -1,0 +1,17 @@
+<div [ngSwitch]="field.type">
+  <ng-container *ngSwitchCase="'input'">
+    <app-form-input [form]="form" [field]="field"></app-form-input>
+  </ng-container>
+  <ng-container *ngSwitchCase="'select'">
+    <app-form-select [form]="form" [field]="field"></app-form-select>
+  </ng-container>
+  <ng-container *ngSwitchCase="'textarea'">
+    <app-form-textarea [form]="form" [field]="field"></app-form-textarea>
+  </ng-container>
+  <ng-container *ngSwitchCase="'radio'">
+    <app-form-radio [form]="form" [field]="field"></app-form-radio>
+  </ng-container>
+  <ng-container *ngSwitchCase="'inputDate'">
+    <app-form-inputdate [form]="form" [field]="field"></app-form-inputdate>
+  </ng-container>
+</div>
