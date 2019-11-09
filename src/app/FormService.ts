@@ -144,17 +144,17 @@ export class FormService {
   }
 
   submit = (plain = false) => {
-    const requestBody = this.forms.map(form => {
-      let obj = {};
+    let obj = {};
+
+    this.forms.forEach(form => {
       if (plain) {
-        return { ...obj, ...form.formGroup.value };
+        obj = { ...obj, ...form.formGroup.value };
       } else {
         obj[form.name] = form.formGroup.value;
-        return obj;
       }
     });
 
-    console.log(requestBody);
+    console.log(obj);
   };
 
   get title() {
