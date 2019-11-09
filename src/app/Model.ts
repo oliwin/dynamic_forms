@@ -90,20 +90,6 @@ export const _JSON = {
           validator: "string",
           placeholder: "Серия",
           order: 2
-        },
-        {
-          name: "registration",
-          type: "input",
-          required: true,
-          placeholder: "Регистрация",
-          order: 3
-        },
-        {
-          name: "limit",
-          type: "input",
-          validator: "number",
-          placeholder: "Часов",
-          order: 4
         }
       ],
       name: "Form1",
